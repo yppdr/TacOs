@@ -1,0 +1,24 @@
+{
+  "name": "tacosapi",
+  "version": "0.0.1",
+  "description": "TacOs API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yppdr/TacOs.git"
+  },
+  "author": "Yannis Piot Pilot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yppdr/TacOs/issues"
+  },
+  "homepage": "https://github.com/yppdr/TacOs#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.0"
+  }
+}
