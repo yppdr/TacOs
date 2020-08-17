@@ -2,6 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const body = require('body-parser')
+const env = require('dotenv').config()
 
 let app = express();
 let port = 3000;
@@ -10,8 +11,7 @@ app.use(body())
 
 const Tacos = require('./tacos')
 
-
-mongoose.connect('mongodb+srv://lowas:MDP@tacos.sheoh.gcp.mongodb.net/tacos?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB, {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.get('/', async (req, res) => {
     const tacos = await Tacos.find()
@@ -72,6 +72,6 @@ app.patch('/:id', async(req, res) => {
      
 })
  
-app.listen(port, () =>  { 
+app.listen(process.env.PORT, () =>  { 
     console.log('API lancée ! Prépare ton tacos')
 })
