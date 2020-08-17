@@ -13,6 +13,12 @@ const Tacos = require('./tacos')
 
 mongoose.connect(process.env.MONGODB, {useNewUrlParser: true, useUnifiedTopology: true});
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); 
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 app.get('/', async (req, res) => {
     const tacos = await Tacos.find()
     await res.json(tacos)
