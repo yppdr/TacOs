@@ -18,14 +18,19 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+  app.use(express.static('FRONT'));
+  app.get('/',function(req,res){
+    res.sendFile(__dirname+'/FRONT/index.html');
+    //__dirname : It will resolve to your project folder.
+  });
 
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
     const tacos = await Tacos.find()
     await res.json(tacos)
 })
 
 
-app.post('/', async (req, res) => {
+app.post('/api', async (req, res) => {
     const nom = req.body.nom; 
     const isok = req.body.isok;
     const date = req.body.date;
@@ -49,7 +54,7 @@ app.post('/', async (req, res) => {
  
 })
 
-app.patch('/:id', async(req, res) => {
+app.patch('/api/:id', async(req, res) => {
     const id = req.params.id
     const tacos = await Tacos.findOne({_id : id})
      
