@@ -147,7 +147,7 @@ var output = (day<10 ? '0' : '') + day + '/' +
         e.preventDefault();
  
         $.post(
-            'http://tacos.local:3000/',
+            '/api',
             {
                 nom : $("#nom").val(),  
                 isok : $("#isok").val(),
